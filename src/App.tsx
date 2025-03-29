@@ -252,6 +252,7 @@ function App() {
           case WeatherCondition.HeavyRainAtTimes:
           case WeatherCondition.TorrentialRainShower:
           case WeatherCondition.ModerateOrHeavyRainShower:
+          case WeatherCondition.ModerateOrHeavyFreezingRain:
           case WeatherCondition.LightRainShower:
           case WeatherCondition.LightRain:
           case WeatherCondition.ModerateRainAtTimes:
