@@ -216,7 +216,6 @@ function App() {
           case WeatherCondition.Sunny:
             console.log("Sunny");
             if (data.current.is_day === 1) {
-              console.log("Sunny Day");
               window.document.body.setAttribute("data-weather", "sunny-day");
             } else {
               window.document.body.setAttribute("data-weather", "clear-nite");
@@ -253,27 +252,56 @@ function App() {
           case WeatherCondition.TorrentialRainShower:
           case WeatherCondition.ModerateOrHeavyRainShower:
           case WeatherCondition.ModerateOrHeavyFreezingRain:
+          case WeatherCondition.LightFreezingRain:
+          case WeatherCondition.FreezingDrizzle:
+          case WeatherCondition.HeavyFreezingDrizzle:
+          case WeatherCondition.PatchyLightDrizzle:
           case WeatherCondition.LightRainShower:
           case WeatherCondition.LightRain:
           case WeatherCondition.ModerateRainAtTimes:
           case WeatherCondition.ModerateRain:
+          case WeatherCondition.PatchyLightRain:
+          case WeatherCondition.PatchyRainPossible:
             window.document.body.setAttribute("data-weather", "rainy");
-
             break;
           case WeatherCondition.HeavySnow:
           case WeatherCondition.PatchyHeavySnow:
           case WeatherCondition.PatchyModerateSnow:
-          case WeatherCondition.LightSnow:
-          case WeatherCondition.ModerateSnow:
           case WeatherCondition.PatchyLightSnow:
+          case WeatherCondition.LightSnow:
+          case WeatherCondition.BlowingSnow:
+          case WeatherCondition.ModerateSnow:
           case WeatherCondition.ModerateOrHeavySnowShowers:
           case WeatherCondition.LightSnowShowers:
           case WeatherCondition.PatchyLightSnowWithThunder:
           case WeatherCondition.ModerateOrHeavySnowWithThunder:
+          case WeatherCondition.PatchySnowPossible:
+          case WeatherCondition.IcePellets:
+          case WeatherCondition.LightShowersOfIcePellets:
+          case WeatherCondition.ModerateOrHeavyShowersOfIcePellets:
+            window.document.body.setAttribute("data-weather", "snowy");
+            break;
+          case WeatherCondition.ThunderyOutbreaksPossible:
+          case WeatherCondition.PatchyLightRainWithThunder:
+          case WeatherCondition.ModerateOrHeavyRainWithThunder:
+            window.document.body.setAttribute("data-weather", "stormy");
+            break;
+          case WeatherCondition.PatchySleetPossible:
+          case WeatherCondition.LightSleet:
+          case WeatherCondition.ModerateOrHeavySleet:
+          case WeatherCondition.LightSleetShowers:
+          case WeatherCondition.ModerateOrHeavySleetShowers:
+            window.document.body.setAttribute("data-weather", "snowy");
+            break;
+          case WeatherCondition.Blizzard:
             window.document.body.setAttribute("data-weather", "snowy");
             break;
           default:
-            console.log("Unknown");
+            console.log(
+              "Unknown weather condition:",
+              data.current.condition.code
+            );
+            window.document.body.setAttribute("data-weather", "unknown");
         }
         console.log(data);
       });
