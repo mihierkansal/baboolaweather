@@ -330,6 +330,11 @@ function App() {
 
     navigator.geolocation.getCurrentPosition(success, error, options);
   }
+  const [time, setTime] = createSignal("");
+  setInterval(() => {
+    if (!weather()) return;
+    setTime(getTime(weather()!.location.localtime));
+  }, 1000);
   myLoc();
   return (
     <div class="weather-container">
@@ -407,6 +412,7 @@ function App() {
             </div>
             <div>Feels like: {weather()?.current.feelslike_f}°F</div>
             <div>{weather()?.current.condition.text}</div>
+            <div>{time()}</div>
           </div>
         </div>
         <hr />
@@ -429,8 +435,10 @@ function App() {
           </div>
 
           <div class="info-card">
-            <h2>{weather()?.current.uv}</h2>
-            <div>uv index</div>
+            <h2>
+              {weather()?.forecast.forecastday[0].day.daily_chance_of_rain}%
+            </h2>
+            <div>chance of rain</div>
           </div>
 
           <div class="info-card">
@@ -440,6 +448,7 @@ function App() {
         </div>
 
         <hr />
+
         <div class="hourly-forecast">
           <For each={weather()?.forecast.forecastday[0].hour}>
             {(hour) => (
